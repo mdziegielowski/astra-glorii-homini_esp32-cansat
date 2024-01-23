@@ -1,14 +1,13 @@
 # On-board C++ software for Astra Glorii Homini's CanSat based on ESP32
 
-The repository is included as a part of Design Review raports for CanSat made by Astra Glorii Homini team. 
+The repository is included as a part of Design Review reports for CanSat made by Astra Glorii Homini team. 
 ## Critical Design Review [CDR]
 
-### -  Update 0.0.1
-The code is developed for ESP32 to control modules used for collecting data during the mission. However, the solutions used are still being checked to provide maximum mesurments efficiency so that can be chnaged at further stages of the project.
+### -  Update 0.1
+The code is developed for ESP32 to control modules used for collecting data during the mission. However, the solutions used are still being checked to provide maximum measurements efficiency so that can be changed at further stages of the project.
 
 #### Futures ensured:
-* GPS calibration function that sets $GPRMC as the only log given by the module
-* sensors inicialization using diffrent comunication protocols such as UART, SPI or I2C in setup function
+* sensors initialization using different communication protocols such as UART, SPI or I2C in setup function
 ``` {.cpp}
 // UART1, UART2 and I2C inicialization for further use 
 Serial1.begin(115200, SERIAL_8N1, 4);
@@ -44,5 +43,6 @@ SPI_SDreader.begin(SD_SCLK,SD_MISO,SD_MOSI);
 * SD card saving system using buffer allowing to collect more data and relieve the card from overload
 * LoRa package sending 
 
-#### Futures plans and modifications:
-Due to the mission objectives it is required to gather the maximum amount of data, which will not be as effortless as it may seems. However, CanSat is obligated to send a packege of mesurements through the radio comunication module each second. All of these operations would cost a lot of time, so that is why we consider multithreading as needed to provide best performance. 
+#### Planned future modifications:
+* multithreading as needed to provide best performance
+* GPS calibration function which will set $GPRMC as the only protocol used in communication must be included in the code. 
